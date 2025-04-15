@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sorted Names List</title>
+</head>
+<body>
+    <h2>Enter Names</h2>
+    <p>Click the button below to start adding names. Hit "Cancel" to finish.</p>
+    <button onclick="collectAndDisplayNames()">Start Adding Names</button>
+
+    <h3>Sorted Names:</h3>
+    <ol id="namesList">
+        <!-- Ordered list of names will appear here -->
+    </ol>
+
+    <script>
+        function collectAndDisplayNames() {
+            const names = [];
+            let name;
+
+            // Keep asking for names until the user presses Cancel
+            while (true) {
+                name = prompt("Enter a name (or press Cancel to finish):");
+
+                if (name === null) {
+                    // User pressed Cancel, stop asking for names
+                    break;
+                }
+
+                name = name.trim();
+                if (name) {
+                    names.push(name); // Add valid name to the array
+                }
+            }
+
+            // Sort names alphabetically
+            names.sort();
+
+            // Display names in an ordered list
+            const namesList = document.getElementById("namesList");
+            namesList.innerHTML = ""; // Clear any existing content
+
+            names.forEach(name => {
+                const listItem = document.createElement("li");
+                listItem.textContent = name;
+                namesList.appendChild(listItem);
+            });
+        }
+    </script>
+</body>
+</html>

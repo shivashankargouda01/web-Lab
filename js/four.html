@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rövarspråket Translator</title>
+    <script>
+        // Define the translate function
+        function translate(text) {
+            const consonants = "bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ";
+            let result = "";
+
+            for (let char of text) 
+            {
+                if (consonants.includes(char)) 
+                {
+                    result += char + "o" + char;
+                } else 
+                {
+                    result += char;
+                }
+            }
+
+            return result;
+        }
+
+        // Function to handle user input and display the result
+        function handleTranslate() 
+        {
+            const inputText = document.getElementById("inputText").value;
+            const translatedText = translate(inputText);
+            document.getElementById("result").innerText = "Rövarspråket translation: " + translatedText;
+        }
+    </script>
+</head>
+<body>
+    <h1>Rövarspråket Translator</h1>
+    <label for="inputText">Enter text to translate:</label>
+    <input type="text" id="inputText">
+    <button onclick="handleTranslate()">Translate</button>
+    <p id="result"></p>
+</body>
+</html>

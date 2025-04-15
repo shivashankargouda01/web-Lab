@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Random Numbers and Average</title>
+</head>
+<body>
+    <h2>Random Number Generator</h2>
+    <p>Click the button to generate random numbers and calculate their average.</p>
+
+    <button onclick="generateNumbers()">Generate Numbers</button>
+    
+    <div id="output" style="margin-top: 20px;">
+        <!-- The results will appear here -->
+    </div>
+
+    <script>
+        function generateNumbers() {
+            // Ask the user for the number of random numbers
+            let count = prompt("How many random numbers would you like to generate?");
+            
+            // Convert to an integer and validate the input
+            count = parseInt(count, 10);
+            if (isNaN(count) || count <= 0) {
+                alert("Please enter a valid positive number.");
+                return;
+            }
+
+            // Generate random numbers and calculate their sum
+            const numbers = [];
+            let sum = 0;
+
+            for (let i = 0; i < count; i++) {
+                const randomNumber = Math.random(); // Generates a random number between 0 and 1
+                numbers.push(randomNumber);
+                sum += randomNumber;
+            }
+
+            // Calculate the average
+            const average = sum / count;
+
+            // Display the results
+            const outputDiv = document.getElementById("output");
+            outputDiv.innerHTML = `
+                <p><strong>Generated Numbers:</strong> ${numbers.join(", ")}</p>
+                <p><strong>Average:</strong> ${average.toFixed(5)}</p>
+            `;
+        }
+    </script>
+</body>
+</html>

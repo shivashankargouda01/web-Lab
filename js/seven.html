@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Christmas Card Translator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+        }
+        .container {
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            width: 300px;
+            background-color: #f9f9f9;
+        }
+        input, button {
+            margin-bottom: 10px;
+            padding: 10px;
+            width: 100%;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            cursor: pointer;
+            background-color: #84fab0;
+            color: white;
+            border: none;
+        }
+        button:hover {
+            background-color: #8fd3f4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Translate Your Christmas Card</h2>
+        <input type="text" id="englishText" placeholder="Enter English text">
+        <button onclick="translateText()">Translate</button>
+        <div id="translatedText" style="margin-top: 20px;"></div>
+    </div>
+
+    <script>
+        // Bilingual lexicon
+        const lexicon = {
+            "merry": "god",
+            "christmas": "jul",
+            "and": "och",
+            "happy": "gott",
+            "new": "nytt",
+            "year": "år"
+        };
+
+        // Translation function
+        function translateText() {
+            const englishText = document.getElementById("englishText").value.toLowerCase().trim();
+            const words = englishText.split(" ");
+            const translatedWords = words.map(word => lexicon[word] || word); // Use original word if not in lexicon
+            const translatedSentence = translatedWords.join(" ");
+
+            // Display translated text
+            const translatedTextDiv = document.getElementById("translatedText");
+            translatedTextDiv.innerHTML = `<strong>Translated Text:</strong> ${translatedSentence}`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Information Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #cfedf8, #8fd3f4);
+        }
+        .form-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 300px;
+        }
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-field {
+            margin-bottom: 15px;
+        }
+        .form-field label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-field input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .form-field button {
+            width: 100%;
+            padding: 10px;
+            background: #84fab0;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 1.1em;
+            cursor: pointer;
+        }
+        .form-field button:hover {
+            background: #8fd3f4;
+        }
+        .output {
+            margin-top: 20px;
+        }
+        .output p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Enter Your Details</h2>
+        <form id="userForm" onsubmit="handleForm(event)">
+            <div class="form-field">
+                <label for="name">Name:</label>
+                <input type="text" id="name" required>
+            </div>
+            <div class="form-field">
+                <label for="age">Age:</label>
+                <input type="number" id="age" min="1" required>
+            </div>
+            <div class="form-field">
+                <label for="hometown">Hometown:</label>
+                <input type="text" id="hometown" required>
+            </div>
+            <div class="form-field">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+        <div class="output" id="output"></div>
+    </div>
+
+    <script>
+        function handleForm(event) {
+            event.preventDefault(); // Prevent the form from refreshing the page
+
+            // Get user input
+            const name = document.getElementById('name').value.trim();
+            const age = document.getElementById('age').value;
+            const hometown = document.getElementById('hometown').value.trim();
+            const outputDiv = document.getElementById('output');
+
+            // Calculate the year of birth
+            const currentYear = new Date().getFullYear();
+            const yearOfBirth = currentYear - age;
+
+            // Generate the hometown search link
+            const searchLink = `https://www.google.com/search?q=${encodeURIComponent(hometown)}`;
+
+            // Display the results
+            outputDiv.innerHTML = `
+                <p><strong>Name:</strong> ${name}</p>
+                <p><strong>Year of Birth:</strong> ${yearOfBirth}</p>
+                <p><strong>Search for hometown:</strong> <a href="${searchLink}" target="_blank">Search ${hometown}</a></p>
+            `;
+        }
+    </script>
+</body>
+</html>

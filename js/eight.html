@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Find Longest Word</title>
+    <script>
+        // Define the findLongestWord function
+        function findLongestWord(words) {
+            let longest = 0;
+            for (let word of words) {
+                if (word.length > longest) {
+                    longest = word.length;
+                }
+            }
+            return longest;
+        }
+
+        // Function to handle user input and display the result
+        function handleFindLongestWord() {
+            const input = document.getElementById("wordArray").value;
+            const words = input.split(',').map(word => word.trim()); // Split and trim input into an array of words
+            const longestLength = findLongestWord(words);
+            document.getElementById("result").innerText = "The length of the longest word is: " + longestLength;
+        }
+    </script>
+</head>
+<body>
+    <h1>Find the Length of the Longest Word</h1>
+    <label for="wordArray">Enter words (comma-separated):</label>
+    <input type="text" id="wordArray">
+    <button onclick="handleFindLongestWord()">Find Longest Word</button>
+    <p id="result"></p>
+</body>
+</html>

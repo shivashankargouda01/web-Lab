@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rollover Image</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+        img {
+            width: 300px;
+            height: 200px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Image Element -->
+    <img 
+        src="360_F_248306754_In0WpTQcIDclgQgbRwsR1gwM4Jdhxzb6.jpg" 
+        alt="Rollover Image" 
+        id="rolloverImage"
+        onmouseover="changeImage('tiger-jpg.jpg')" 
+        onmouseout="changeImage('360_F_248306754_In0WpTQcIDclgQgbRwsR1gwM4Jdhxzb6.jpg')" 
+    />
+
+    <!-- JavaScript -->
+    <script>
+        function changeImage(newSrc) {
+            const image = document.getElementById("rolloverImage");
+            image.src = newSrc;
+        }
+    </script>
+</body>
+</html>

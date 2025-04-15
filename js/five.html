@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sum and Multiply Functions</title>
+    <script>
+        // Define the sum function
+        function sum(arr) {
+            return arr.reduce((total, num) => total + num, 0);
+        }
+
+        // Define the multiply function
+        function multiply(arr) {
+            return arr.reduce((total, num) => total * num, 1);
+        }
+
+        // Function to handle user input and display results
+        function calculate() {
+            const input = document.getElementById("numbers").value;
+            const numberArray = input.split(',').map(Number);
+            
+            const sumResult = sum(numberArray);
+            const multiplyResult = multiply(numberArray);
+
+            document.getElementById("result").innerText = 
+                'Sum: ${sumResult}, Multiply: ${multiplyResult}';
+        }
+    </script>
+</head>
+<body>
+    <h1>Sum and Multiply Calculator</h1>
+    <label for="numbers">Enter numbers (comma-separated):</label>
+    <input type="text" id="numbers">
+    <button onclick="calculate()">Calculate</button>
+    <p id="result"></p>
+</body>
+</html>

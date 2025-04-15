@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Find Maximum</title>
+    <script>
+        // Define the max() function
+        function max(a, b) {
+            if (a > b) {
+                return a;
+            } else {
+                return b;
+            }
+        }
+
+        // Example usage
+        function findMax() {
+            const num1 = parseFloat(document.getElementById("num1").value);
+            const num2 = parseFloat(document.getElementById("num2").value);
+            const largest = max(num1, num2);
+            document.getElementById("result").innerText = "The largest number is: " + largest;
+        }
+    </script>
+</head>
+<body>
+    <h1>Find the Maximum of Two Numbers</h1>
+    <label for="num1">Enter first number:</label>
+    <input type="number" id="num1">
+    <br>
+    <label for="num2">Enter second number:</label>
+    <input type="number" id="num2">
+    <br>
+    <button onclick="findMax()">Find Maximum</button>
+    <p id="result"></p>
+</body>
+</html>
